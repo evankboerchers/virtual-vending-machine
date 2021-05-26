@@ -5,33 +5,55 @@
     <link rel="stylesheet" href="vendilator.css" />
   </head>
   <body>
-    <!-- <script type = "text/javascript" >
+    <script type = "text/javascript" >
 
 		var vending=true;
 
 		init(null, document);
 
-		//main event loop for vending machine
-		while (vending){
+		// //main event loop for vending machine
+		// while (vending){
 
 
-		}
+		// }
 
 
-	</script> -->
+	</script>
 
     <div class="content-container">
       <div class="vending">
-        <h1>Virtual Vending Machine</h1>
-
-        <div class="window"></div>
-      </div>
-
-      <div class="button-panel">
-        <h1>Enter Item Code</h1>
-      </div>
-      <div class="money-panel">
-        <h1>Insert Money</h1>
+        <h1 class="title">Virtual Vending Machine</h1>
+        <h2 class="author">By Evan Boerchers</h1>
+        <div id="output-window">OUTPUT</div>
+        <div class="control-container">
+          <div class="code-container">
+            <div id="code-window"></div>
+            <h1>Enter Item Code</h1>
+            <div class="letter-panel">
+              <button id="letter-a" class="code-button">A</button>
+              <button id="letter-b" class="code-button">B</button>
+              <button id="letter-c" class="code-button">C</button>
+            </div>
+            <div class="number-panel">
+              <button id="number-1" class="code-button">1</button>
+              <button id="number-2" class="code-button">2</button>
+              <button id="number-3" class="code-button">3</button>
+              <button id="number-4" class="code-button">4</button>
+              <button id="number-5" class="code-button">5</button>
+            </div>
+          </div>
+          <span class="panel-span"></span>
+          <div class="money-container">
+            <div id="money-window">Coin</div>
+            <h1>Insert Coin</h1>
+            <div class="money-panel">
+              <button class="money-button" id="money-0.05">$0.05</button>
+              <button class="money-button" id="money-0.10">$0.10</button>
+              <button class="money-button" id="money-0.25">$0.25</button>
+              <button class="money-button" id="money-1.00">$1.00</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

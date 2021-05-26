@@ -1,36 +1,105 @@
 body {
-  background-color: grey;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: grey;
 }
 
 .vending {
-  background-color: darkred;
-  width: 500;
-  height: 800;
+  padding-top: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 50;
+  background-color: darkred;
+  outline: 2pt solid black;
 }
 
-.button-panel {
+.title {
+  margin-top: -20;
+  color: whitesmoke;
+}
+
+.author {
+  margin-top: -20;
+  color: gold;
+}
+
+#output-window {
+  background-color: rgb(217, 225, 228);
+  outline: 2pt solid black;
+  padding: 20;
+  width: 400;
+  height: 200;
+}
+
+.control-container {
+  color: white;
+  padding: 20;
+  padding-top: 0;
+  margin: 20;
+  display: flex;
+  flex-direction: row;
+}
+
+.code-container {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 20;
+}
+
+.letter-panel {
+  display: flex;
+  justify-content: row;
+}
+
+.number-panel {
+  display: flex;
+  justify-content: row;
+  margin-top: 5;
+}
+
+.code-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25;
+  height: 25;
+  margin: 5;
   background-color: black;
   color: white;
+}
+
+#code-window {
+  height: 50;
+  padding: 20;
+  background-color: rgb(217, 225, 228);
+}
+
+.money-container {
   display: flex;
+  flex-direction: column;
+  padding: 20;
+  background-color: black;
+}
+
+.money-button {
+  color: black;
+  background-color: green;
+}
+
+.panel-span {
+  margin: 20;
 }
 
 .money-panel {
+  display: flex;
+  flex-direction: column;
 }
 
-.change-output {
-}
-
-.item-output {
-}
-
-.window {
-  background-color: lightblue;
-  width: 400;
-  height: 400;
+#money-window {
+  height: 50;
+  padding: 20;
+  background-color: rgb(217, 225, 228);
 }
