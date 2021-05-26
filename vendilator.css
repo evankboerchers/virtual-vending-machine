@@ -1,0 +1,36 @@
+body {
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vending {
+  background-color: darkred;
+  width: 500;
+  height: 800;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button-panel {
+  background-color: black;
+  color: white;
+  display: flex;
+}
+
+.money-panel {
+}
+
+.change-output {
+}
+
+.item-output {
+}
+
+.window {
+  background-color: lightblue;
+  width: 400;
+  height: 400;
+}
