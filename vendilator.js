@@ -4,7 +4,6 @@
 const NICKEL = 0.05;
 const DIME = 0.1;
 const QUARTER = 0.25;
-const LOONIE = 1.0;
 
 /**
  * button constants
@@ -58,8 +57,7 @@ const clear_button = document.getElementById('clear');
 const nickel_button = document.getElementById('money-0.05');
 const dime_button = document.getElementById('money-0.10');
 const quarter_button = document.getElementById('money-0.25');
-const loonie_button = document.getElementById('money-1.00');
-const return_button = document.getElementById('return');
+const return_button = document.getElementById('money-return');
 
 /**
  * money button action listeners
@@ -79,9 +77,9 @@ quarter_button.addEventListener('click', function () {
   addMoney(QUARTER);
 });
 
-loonie_button.addEventListener('click', function () {
-  console.log('loonie inserted');
-  addMoney(LOONIE);
+return_button.addEventListener('click', function () {
+  console.log('money returned');
+  returnMoney();
 });
 
 /**
@@ -129,7 +127,7 @@ five_button.addEventListener('click', function () {
 
 purchase_button.addEventListener('click', function () {
   console.log('purchase pressed');
-  printOutput('Item ' + itemCode + '<br/> insert');
+  purchaseItem();
 });
 
 clear_button.addEventListener('click', function () {
@@ -142,9 +140,34 @@ clear_button.addEventListener('click', function () {
  * adds inserted money to total
  */
 function addMoney(value) {
-  moneyInserted = moneyInserted + value;
+  moneyInserted = roundTo2Decimals(moneyInserted + value);
   console.log('total money inserted: ' + moneyInserted);
   printMoneyInserted();
+}
+
+/**
+ * returns money, prints output message
+ */
+function returnMoney() {
+  printOutput(returnMoneyMessage());
+  moneyInserted = 0.0;
+  printMoneyInserted();
+}
+
+/**
+ * prints value of inserted money to money window
+ */
+function printMoneyInserted() {
+  moneyWindow_div.innerHTML = '$ ' + moneyInserted;
+}
+
+/**
+ * rounds a number to 2 decimal places
+ * @param {the number to be rounded} num
+ * @returns the rounded number
+ */
+function roundTo2Decimals(num) {
+  return +(Math.round(num * 100) / 100).toFixed(2);
 }
 
 /**
@@ -162,6 +185,9 @@ function addToItemCode(char) {
   }
   console.log('current item code ' + itemCode);
   printItemCode();
+  if (itemCode.length == 2) {
+    printOutput(itemCode + ' selected, price: $' + getItemPrice());
+  }
 }
 /**
  * checks if a character is a letter
@@ -173,18 +199,54 @@ function isLetter(char) {
 }
 
 /**
+ * purchases the current item
+ */
+function purchaseItem() {
+  let purchaseMessage = '';
+  if (itemCode.length == 2) {
+    let cost = getItemPrice();
+    if (moneyInserted >= cost) {
+      purchaseMessage += 'Dispensing ' + itemCode + '...<br/>';
+      moneyInserted = roundTo2Decimals(moneyInserted - cost);
+      purchaseMessage += returnMoneyMessage() + '<br/>';
+      moneyInserted = 0;
+      printMoneyInserted();
+    } else {
+      purchaseMessage += 'Not enough money need $' + cost + '<br/>';
+    }
+  } else {
+    purchaseMessage += 'Select a valid Item' + '<br/>';
+  }
+  printOutput(purchaseMessage);
+}
+
+/**
+ * gets the price of the currently selected item
+ * @returns price of selected item
+ */
+function getItemPrice() {
+  switch (itemCode[0]) {
+    case A:
+      return A_ITEM;
+    case B:
+      return B_ITEM;
+    case C:
+      return C_ITEM;
+    default:
+      return 0.0;
+  }
+}
+
+/**
  * Prints the value of inserted money to the money window
  */
-function printMoneyInserted() {
-  moneyWindow_div.innerHTML = '$ ' + moneyInserted;
-}
 
 /**
  * prints message to output window
  * @param {message to be printed} message
  */
 function printOutput(message) {
-  outputWindow_div = message;
+  outputWindow_div.innerHTML = message;
 }
 
 /**
@@ -192,4 +254,12 @@ function printOutput(message) {
  */
 function printItemCode() {
   codeWindow_div.innerHTML = itemCode;
+}
+
+/**
+ * returns money returned message
+ * @returns message
+ */
+function returnMoneyMessage() {
+  return '$ ' + moneyInserted + ' returned.';
 }
