@@ -1,33 +1,18 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Vending Machine</title>
-    <script type="text/javascript" src="./vendilator_lib.js"></script>
+    <title>Virtual Vending Machine</title> 
     <link rel="stylesheet" href="vendilator.css" />
   </head>
   <body>
-    <script type = "text/javascript" >
-
-		var vending=true;
-
-		init(null, document);
-
-		// //main event loop for vending machine
-		// while (vending){
-
-
-		// }
-
-
-	</script>
-
     <div class="content-container">
       <div class="vending">
         <h1 class="title">Virtual Vending Machine</h1>
         <h2 class="author">By Evan Boerchers</h1>
-        <div id="output-window">OUTPUT</div>
+        <div id="output-window" class="window">Insert money and enter an item to purchase</div>
         <div class="control-container">
           <div class="code-container">
-            <div id="code-window"></div>
+            <div id="code-window" class="window"></div>
             <h1>Enter Item Code</h1>
             <div class="letter-panel">
               <button id="letter-a" class="code-button">A</button>
@@ -41,10 +26,14 @@
               <button id="number-4" class="code-button">4</button>
               <button id="number-5" class="code-button">5</button>
             </div>
+            <div class="command-panel">
+              <button id="purchase">Purchase</button>
+              <button id="clear">Clear</button>
+            </div>
           </div>
           <span class="panel-span"></span>
           <div class="money-container">
-            <div id="money-window">Coin</div>
+            <div id="money-window" class="window"></div>
             <h1>Insert Coin</h1>
             <div class="money-panel">
               <button class="money-button" id="money-0.05">$0.05</button>
@@ -52,9 +41,11 @@
               <button class="money-button" id="money-0.25">$0.25</button>
               <button class="money-button" id="money-1.00">$1.00</button>
             </div>
+            <button id='money-return'> Return Money</button>
           </div>
         </div>
       </div>
     </div>
+    <script src="./vendilator.js" charset="utf-8"></script>
   </body>
 </html>
